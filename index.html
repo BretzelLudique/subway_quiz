@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Quiz Template</title>
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-image: url("./0diqfkbt.png");
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+
+            body {
+                font-family: "Inter", sans-serif;
+                width: 1080px;
+                height: 1080px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 60px;
+                position: relative;
+            }
+
+            .outer-street-sign {
+                background: #1b2a39;
+                display: inline-block;
+                padding: 10px;
+                margin-bottom: 140px;
+                border-radius: 8px;
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+                z-index: 1;
+            }
+
+            .street-sign {
+                background: #1b2a39;
+                color: white;
+                padding: 20px 40px;
+                border: 6px solid white;
+                font-size: 52px;
+                font-weight: 700;
+                text-align: center;
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+                min-width: 600px;
+                position: relative;
+                z-index: 1;
+            }
+
+            .quiz-card {
+                background: #1b2a39;
+                border-radius: 24px;
+                padding: 50px;
+                box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+                max-width: 900px;
+                width: 100%;
+                position: relative;
+                margin-top: -80px;
+                z-index: 2;
+                opacity: 0.85;
+            }
+
+            .subway-line-number {
+                background: #cec929;
+                color: #1b2a39;
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 60px;
+                font-weight: 700;
+                position: absolute;
+                top: -40px;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 10;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            }
+
+            .question-text {
+                color: white;
+                font-size: 60px;
+                font-weight: 800;
+                text-align: center;
+                margin: 40px 0 50px 0;
+                line-height: 1.2;
+            }
+
+            .answers {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .answer {
+                background: #f5f5f5;
+                color: #1b2a39;
+                padding: 25px 30px;
+                border-radius: 16px;
+                font-size: 36px;
+                font-weight: 600;
+                display: flex;
+                align-items: center;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            }
+
+            .answer-letter {
+                background: #1b2a39;
+                color: white;
+                width: 50px;
+                height: 50px;
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 28px;
+                font-weight: 700;
+                margin-right: 25px;
+                flex-shrink: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="outer-street-sign">
+            <div class="street-sign" id="streetSign">Rue de la Pompe</div>
+        </div>
+        <div class="quiz-card">
+            <div class="subway-line-number" id="subwayLineNumber">9</div>
+
+            <div class="question-text" id="questionText">
+                Pourquoi la station <br />
+                s'appelle-t-elle ainsi?
+            </div>
+
+            <div class="answers">
+                <div class="answer">
+                    <div class="answer-letter">A</div>
+                    <div class="answer-text" id="answerA">
+                        Pour sa situation géographique proche du bois de
+                        Boulogne
+                    </div>
+                </div>
+
+                <div class="answer">
+                    <div class="answer-letter">B</div>
+                    <div class="answer-text" id="answerB">
+                        En lien avec une ancienne pompe située dans le quartier
+                    </div>
+                </div>
+
+                <div class="answer">
+                    <div class="answer-letter">C</div>
+                    <div class="answer-text" id="answerC">
+                        À cause de crevaisons multiples <br />
+                        à cet endroit lors du Tour de France
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function updateQuiz(data) {
+                if (data.streetSign)
+                    document.getElementById("streetSign").textContent =
+                        data.streetSign;
+                if (data.subwayLineNumber)
+                    document.getElementById("subwayLineNumber").textContent =
+                        data.subwayLineNumber;
+                if (data.questionText)
+                    document.getElementById("questionText").textContent =
+                        data.questionText;
+                if (data.answerA)
+                    document.getElementById("answerA").textContent =
+                        data.answerA;
+                if (data.answerB)
+                    document.getElementById("answerB").textContent =
+                        data.answerB;
+                if (data.answerC)
+                    document.getElementById("answerC").textContent =
+                        data.answerC;
+            }
+        </script>
+    </body>
+</html>

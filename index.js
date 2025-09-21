@@ -13,6 +13,8 @@ const puppeteer = require("puppeteer");
     await page.setViewport({ width: 1080, height: 1080 });
     await page.goto(fileUrl, { waitUntil: "domcontentloaded" });
 
-    await page.screenshot({ path: `output/${new Date().toString()}.png` });
+    await page.screenshot({
+        path: `output/${new Date().toISOString().replace(/[:]/g, "-")}.png`,
+    });
     await browser.close();
 })();

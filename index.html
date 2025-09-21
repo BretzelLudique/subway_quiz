@@ -20,7 +20,7 @@
                 left: 0;
                 right: 0;
                 bottom: 0;
-                background-image: url("./0diqfkbt.png");
+                background-image: url("./AST2163209-XL.jpg");
                 background-size: cover;
                 background-position: center;
                 background-repeat: no-repeat;
@@ -49,19 +49,104 @@
             }
 
             .street-sign {
-                background: #1b2a39;
+                background: #2c4a6b;
                 color: white;
                 padding: 20px 40px;
-                border: 6px solid white;
-                font-size: 52px;
-                font-weight: 700;
+                font-size: 72px;
+                font-weight: 900;
                 text-align: center;
-                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-                min-width: 600px;
                 position: relative;
-                z-index: 1;
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+                min-width: 600px;
             }
 
+            .outer-frame {
+                background: #2c4a6b;
+                color: white;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                /* z-index: 10000; */
+            }
+
+            .border-frame {
+                position: absolute;
+                top: 12px;
+                left: 12px;
+                right: 12px;
+                bottom: 12px;
+                border: 3px solid white;
+                pointer-events: none;
+                z-index: 100;
+            }
+
+            /* Corner white circles using clip-path */
+            .street-sign .corner-circle {
+                position: absolute;
+                width: 10px;
+                height: 10px;
+                background: white;
+                clip-path: circle(50%);
+                z-index: 100;
+            }
+
+            .street-sign .corner-circle.top-left {
+                top: 12px;
+                left: 12px;
+            }
+
+            .street-sign .corner-circle.top-right {
+                top: 12px;
+                right: 12px;
+            }
+
+            .street-sign .corner-circle.bottom-left {
+                bottom: 12px;
+                left: 12px;
+            }
+
+            .street-sign .corner-circle.bottom-right {
+                bottom: 12px;
+                right: 12px;
+            }
+
+            /* Corner red squares on top of circles */
+            .street-sign .corner-square {
+                position: absolute;
+                width: 8px;
+                height: 8px;
+                background: #2c4a6b;
+                z-index: 200;
+            }
+
+            .street-sign .corner-square.top-left {
+                top: 10px;
+                left: 10px;
+            }
+
+            .street-sign .corner-square.top-right {
+                top: 10px;
+                right: 10px;
+            }
+
+            .street-sign .corner-square.bottom-left {
+                bottom: 10px;
+                left: 10px;
+            }
+
+            .street-sign .corner-square.bottom-right {
+                bottom: 10px;
+                right: 10px;
+            }
+
+            .street-text {
+                position: relative;
+                z-index: 100;
+                letter-spacing: -1px;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            }
             .quiz-card {
                 background: #1b2a39;
                 border-radius: 24px;
@@ -139,8 +224,23 @@
     </head>
     <body>
         <div class="outer-street-sign">
-            <div class="street-sign" id="streetSign">Rue de la Pompe</div>
+            <div class="street-sign">
+                <div class="outer-frame"></div>
+                <div class="border-frame"></div>
+                <div class="corner-circle top-left"></div>
+                <div class="corner-circle top-right"></div>
+                <div class="corner-circle bottom-left"></div>
+                <div class="corner-circle bottom-right"></div>
+                <div class="corner-square top-left"></div>
+                <div class="corner-square top-right"></div>
+                <div class="corner-square bottom-left"></div>
+                <div class="corner-square bottom-right"></div>
+                <div class="inner-squares"></div>
+                <div class="bottom-squares"></div>
+                <div class="street-text">Rue de la Pompe</div>
+            </div>
         </div>
+
         <div class="quiz-card">
             <div class="subway-line-number" id="subwayLineNumber">9</div>
 
